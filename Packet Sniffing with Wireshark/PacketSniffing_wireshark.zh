@@ -1,0 +1,15 @@
+# Make sure to first chmod +x PacketSniffing_wireshark.zh then only run the script or else there will be error...!
+---
+#!/bin/bash
+
+# Define variables
+INTERFACE="any"  # You can change this to a specific interface, like eth0, wlan0, etc.
+CAPTURE_FILE="captured_packets.cap"
+PACKET_COUNT=100  # Number of packets to capture, adjust as needed
+
+echo "Starting packet capture on interface $INTERFACE..."
+
+# Start tcpdump, capture packets and store them in a .cap file
+sudo tcpdump -i $INTERFACE -nnvvSs 1514 -c $PACKET_COUNT -w $CAPTURE_FILE
+
+echo "Packet capture complete. Data saved in '$CAPTURE_FILE'."
